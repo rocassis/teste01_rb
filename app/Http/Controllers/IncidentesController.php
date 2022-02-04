@@ -89,8 +89,8 @@ class IncidentesController extends Controller
             'titulo' => 'required|string',
             'descricao' => 'required|string',
             'criticidade' => 'required|integer',
-            'tipo' => 'required|integer',
-            'status' => 'required|integer'
+            // 'tipo' => 'required|integer',
+            // 'status' => 'required|integer'
         ]);
 
         try {

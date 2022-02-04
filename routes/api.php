@@ -19,4 +19,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::resource('incidentes', IncidentesController::class);
+// Route::resource('incidentes', IncidentesController::class);
+
+Route::get('incidentes/', [IncidentesController::class, 'index']);
+Route::post('incidentes/', [IncidentesController::class, 'store']);
+Route::get('incidentes/{incidentes}', [IncidentesController::class, 'show']);
+Route::patch('incidentes/{incidentes}', [IncidentesController::class, 'update']);
+Route::delete('incidentes/{incidentes}', [IncidentesController::class, 'destroy']);
