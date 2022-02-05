@@ -6446,7 +6446,7 @@ var About = function About() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CreateProduct)
+/* harmony export */   "default": () => (/* binding */ CreateIncidente)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -6479,22 +6479,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import React from 'react';
-// const Cadastro = () => {
-// return (
-// 	<div
-// 	style={{
-// 		display: 'flex',
-// 		justifyContent: 'Right',
-// 		alignItems: 'Right',
-// 		height: '100vh'
-// 	}}
-// 	>
-// 	<h1>GeeksforGeeks is a Computer Science portal for geeks.</h1>
-// 	</div>
-// );
-// };
-// export default Cadastro;
 
 
 
@@ -6505,34 +6489,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function CreateProduct() {
+function CreateIncidente() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      title = _useState2[0],
-      setTitle = _useState2[1];
+      titulo = _useState2[0],
+      setTitulo = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      description = _useState4[0],
-      setDescription = _useState4[1];
+      descricao = _useState4[0],
+      setDescricao = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      image = _useState6[0],
-      setImage = _useState6[1];
+      criticidade = _useState6[0],
+      setCriticidade = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      validationError = _useState8[0],
-      setValidationError = _useState8[1];
+      tipo = _useState8[0],
+      setTipo = _useState8[1];
 
-  var changeHandler = function changeHandler(event) {
-    setImage(event.target.files[0]);
-  };
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState10 = _slicedToArray(_useState9, 2),
+      status = _useState10[0],
+      setStatus = _useState10[1];
 
-  var createProduct = /*#__PURE__*/function () {
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      validationError = _useState12[0],
+      setValidationError = _useState12[1];
+
+  var storeIncidente = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
       var formData;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -6540,12 +6530,15 @@ function CreateProduct() {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              formData = new FormData();
-              formData.append('title', title);
-              formData.append('description', description);
-              formData.append('image', image);
-              _context.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://localhost:8000/api/products", formData).then(function (_ref2) {
+              formData = {
+                'titulo': titulo,
+                'descricao': descricao,
+                'criticidade': criticidade,
+                'status': status,
+                'tipo': tipo
+              };
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('http://localhost:8186/api/incidente', formData).then(function (_ref2) {
                 var data = _ref2.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
                   icon: "success",
@@ -6565,7 +6558,7 @@ function CreateProduct() {
                 }
               });
 
-            case 7:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -6573,7 +6566,7 @@ function CreateProduct() {
       }, _callee);
     }));
 
-    return function createProduct(_x) {
+    return function storeIncidente(_x) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -6614,18 +6607,18 @@ function CreateProduct() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                onSubmit: createProduct,
+                onSubmit: storeIncidente,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
-                      controlId: "Name",
+                      controlId: "Titulo",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
-                        children: "Title"
+                        children: "T\xEDtulo"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
                         type: "text",
-                        value: title,
+                        value: titulo,
                         onChange: function onChange(event) {
-                          setTitle(event.target.value);
+                          setTitulo(event.target.value);
                         }
                       })]
                     })
@@ -6634,15 +6627,15 @@ function CreateProduct() {
                   className: "my-3",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
-                      controlId: "Description",
+                      controlId: "Descricao",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
-                        children: "Description"
+                        children: "Descri\xE7\xE3o"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
                         as: "textarea",
                         rows: 3,
-                        value: description,
+                        value: descricao,
                         onChange: function onChange(event) {
-                          setDescription(event.target.value);
+                          setDescricao(event.target.value);
                         }
                       })]
                     })
@@ -6650,13 +6643,69 @@ function CreateProduct() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
-                      controlId: "Image",
-                      className: "mb-3",
+                      controlId: "Criticidade",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
-                        children: "Image"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
-                        type: "file",
-                        onChange: changeHandler
+                        children: "Criticidade"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                        className: "select form-control",
+                        onChange: function onChange(event) {
+                          setCriticidade(event.target.value);
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "1",
+                          children: "Alta"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "2",
+                          children: "M\xE9dia"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "3",
+                          children: "Baixa"
+                        })]
+                      })]
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+                      controlId: "Tipo",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
+                        children: "Tipo"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                        className: "select form-control",
+                        onChange: function onChange(event) {
+                          setTipo(event.target.value);
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "1",
+                          children: "Alarme"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "2",
+                          children: "Incidente"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "3",
+                          children: "Outros"
+                        })]
+                      })]
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+                      controlId: "Status",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
+                        children: "Status"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                        className: "select form-control",
+                        onChange: function onChange(event) {
+                          setStatus(event.target.value);
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "1",
+                          children: "Inativo"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "2",
+                          children: "Ativo"
+                        })]
                       })]
                     })
                   })
@@ -6666,7 +6715,7 @@ function CreateProduct() {
                   size: "lg",
                   block: "block",
                   type: "submit",
-                  children: "Save"
+                  children: "Salvar"
                 })]
               })]
             })]
@@ -6688,7 +6737,7 @@ function CreateProduct() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EditUser)
+/* harmony export */   "default": () => (/* binding */ EditIncidente)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -6731,7 +6780,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function EditUser() {
+function EditIncidente() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
@@ -6755,7 +6804,7 @@ function EditUser() {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       tipo = _useState8[0],
-      settipo = _useState8[1];
+      setTipo = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
@@ -6768,19 +6817,18 @@ function EditUser() {
       setValidationError = _useState12[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProduct();
+    fetchIncidente();
   }, []);
 
-  var fetchProduct = /*#__PURE__*/function () {
+  var fetchIncidente = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:8186/api/incidentes/".concat(id)).then(function (_ref2) {
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:8186/api/incidente/".concat(id)).then(function (_ref2) {
                 var data = _ref2.data;
-                //   const { title, description } = data.product
                 var _data$incidente = data.incidente,
                     titulo = _data$incidente.titulo,
                     descricao = _data$incidente.descricao,
@@ -6791,6 +6839,8 @@ function EditUser() {
                 setTitle(titulo);
                 setDescricao(descricao);
                 setCriticidade(criticidade);
+                setTipo(tipo);
+                setStatus(status);
               })["catch"](function (_ref3) {
                 var data = _ref3.response.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
@@ -6807,7 +6857,7 @@ function EditUser() {
       }, _callee);
     }));
 
-    return function fetchProduct() {
+    return function fetchIncidente() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -6816,7 +6866,7 @@ function EditUser() {
     setImage(event.target.files[0]);
   };
 
-  var updateProduct = /*#__PURE__*/function () {
+  var updateIncidente = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
       var formData;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -6824,13 +6874,15 @@ function EditUser() {
           switch (_context2.prev = _context2.next) {
             case 0:
               e.preventDefault();
-              formData = new FormData(); // formData.append('_method', 'PATCH');
-
-              formData.append('titulo', titulo);
-              formData.append('descricao', descricao);
-              formData.append('criticidade', criticidade);
-              _context2.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().patch("http://localhost:8186/api/incidentes/".concat(id), formData).then(function (_ref5) {
+              formData = {
+                'titulo': titulo,
+                'descricao': descricao,
+                'criticidade': criticidade,
+                'status': status,
+                'tipo': tipo
+              };
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().put("http://localhost:8186/api/incidente/".concat(id), formData).then(function (_ref5) {
                 var data = _ref5.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
                   icon: "success",
@@ -6850,7 +6902,7 @@ function EditUser() {
                 }
               });
 
-            case 7:
+            case 4:
             case "end":
               return _context2.stop();
           }
@@ -6858,7 +6910,7 @@ function EditUser() {
       }, _callee2);
     }));
 
-    return function updateProduct(_x) {
+    return function updateIncidente(_x) {
       return _ref4.apply(this, arguments);
     };
   }();
@@ -6899,13 +6951,13 @@ function EditUser() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                onSubmit: updateProduct,
+                onSubmit: updateIncidente,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
-                      controlId: "Name",
+                      controlId: "Titulo",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
-                        children: "Titulo"
+                        children: "T\xEDtulo"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
                         type: "text",
                         value: titulo,
@@ -6919,9 +6971,9 @@ function EditUser() {
                   className: "my-3",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
-                      controlId: "Description",
+                      controlId: "Descricao",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
-                        children: "Description"
+                        children: "Descricao"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
                         as: "textarea",
                         rows: 3,
@@ -6952,6 +7004,51 @@ function EditUser() {
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                           value: "3",
                           children: "Baixa"
+                        })]
+                      })]
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+                      controlId: "Tipo",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
+                        children: "Tipo"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                        className: "select form-control",
+                        onChange: function onChange(event) {
+                          setTipo(event.target.value);
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "1",
+                          children: "Alarme"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "2",
+                          children: "Incidente"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "3",
+                          children: "Outros"
+                        })]
+                      })]
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+                      controlId: "Status",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
+                        children: "Status"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                        className: "select form-control",
+                        onChange: function onChange(event) {
+                          setStatus(event.target.value);
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "1",
+                          children: "Inativo"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                          value: "2",
+                          children: "Ativo"
                         })]
                       })]
                     })
@@ -7014,22 +7111,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import React from 'react';
-// const Home = () => {
-// return (
-// 	<div
-// 	style={{
-// 		display: 'flex',
-// 		justifyContent: 'Right',
-// 		alignItems: 'Right',
-// 		height: '100vh'
-// 	}}
-// 	>
-// 	<h1>Tela Inicial.</h1>
-// 	</div>
-// );
-// };
-// export default Home;
 
 
 
@@ -7072,7 +7153,7 @@ function List() {
     };
   }();
 
-  var deleteProduct = /*#__PURE__*/function () {
+  var deletIncidente = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
       var isConfirm;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -7081,13 +7162,14 @@ function List() {
             case 0:
               _context2.next = 2;
               return sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Você tem certeza?',
+                text: "Essa operação não pode ser desfeita!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Sim, excluir!'
               }).then(function (result) {
                 return result.isConfirmed;
               });
@@ -7104,7 +7186,7 @@ function List() {
 
             case 5:
               _context2.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("http://localhost:8000/api/products/".concat(id)).then(function (_ref4) {
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("http://localhost:8186/api/incidente/".concat(id)).then(function (_ref4) {
                 var data = _ref4.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
                   icon: "success",
@@ -7127,7 +7209,7 @@ function List() {
       }, _callee2);
     }));
 
-    return function deleteProduct(_x) {
+    return function deletIncidente(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
@@ -7138,10 +7220,12 @@ function List() {
       className: "row",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "col-12",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-          className: "btn btn-primary mb-2 float-end",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+          className: "btn btn-success mb-2 float-end",
           to: "/cadastro",
-          children: "Create Product"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+            className: ""
+          }), "Novo Incicente"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "col-12",
@@ -7184,7 +7268,7 @@ function List() {
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         variant: "danger",
                         onClick: function onClick() {
-                          return deleteProduct(row.id);
+                          return deletIncidente(row.id);
                         },
                         children: "Delete"
                       })]

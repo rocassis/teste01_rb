@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Incidentes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class IncidentesController extends Controller
 {
@@ -89,8 +90,8 @@ class IncidentesController extends Controller
             'titulo' => 'required|string',
             'descricao' => 'required|string',
             'criticidade' => 'required|integer',
-            // 'tipo' => 'required|integer',
-            // 'status' => 'required|integer'
+            'tipo' => 'required|integer',
+            'status' => 'required|integer'
         ]);
 
         try {
@@ -98,6 +99,7 @@ class IncidentesController extends Controller
             $incidentes->update();
             return response()->json(['message' => 'Incidente atualizado com sucesso!']);
         } catch (\Exception $ex) {
+            \Log::error($ex->getMessage());
             return response()->json(['message' => 'Ocorreu um erro ao atualizar o incidente. Contacte o administrador.'], 500);
         }
     }

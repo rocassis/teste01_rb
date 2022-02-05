@@ -9,5 +9,5 @@ class Incidentes extends Model
 {
     use HasFactory;
 
-    protected $filable = ['titulo','descricao','criticidade','tipo','status'];   
+    protected $fillable = ['titulo','descricao','criticidade','tipo','status'];   
 }
