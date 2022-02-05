@@ -7121,26 +7121,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function List() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      products = _useState2[0],
-      setProducts = _useState2[1];
+      incidentes = _useState2[0],
+      setIncidente = _useState2[1];
 
+  var config_incidentes = JSON.parse(document.getElementById('config_inicidentes').value);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProducts();
+    fetchIncidente();
   }, []);
 
-  var fetchProducts = /*#__PURE__*/function () {
+  var fetchIncidente = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var url;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:8186/api/incidentes").then(function (_ref2) {
+              url = "http://localhost:8186" + '/api/incidentes';
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (_ref2) {
                 var data = _ref2.data;
-                setProducts(data);
+                setIncidente(data);
               });
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -7148,14 +7151,14 @@ function List() {
       }, _callee);
     }));
 
-    return function fetchProducts() {
+    return function fetchIncidente() {
       return _ref.apply(this, arguments);
     };
   }();
 
   var deletIncidente = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
-      var isConfirm;
+      var isConfirm, url;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -7185,14 +7188,15 @@ function List() {
               return _context2.abrupt("return");
 
             case 5:
-              _context2.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("http://localhost:8186/api/incidente/".concat(id)).then(function (_ref4) {
+              url = "http://localhost:8186" + '/api/incidente/${id}';
+              _context2.next = 8;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"](url).then(function (_ref4) {
                 var data = _ref4.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
                   icon: "success",
                   text: data.message
                 });
-                fetchProducts();
+                fetchIncidente();
               })["catch"](function (_ref5) {
                 var data = _ref5.response.data;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
@@ -7201,7 +7205,7 @@ function List() {
                 });
               });
 
-            case 7:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -7238,7 +7242,7 @@ function List() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Title"
+                    children: "T\xEDtulo"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                     children: "Criticidade"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
@@ -7250,16 +7254,16 @@ function List() {
                   })]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                children: products.length > 0 && products.map(function (row, key) {
+                children: incidentes.length > 0 && incidentes.map(function (row, key) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
                       children: row.titulo
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: row.criticidade
+                      children: config_incidentes.CRITICIDADE[row.criticidade]
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: row.tipo
+                      children: config_incidentes.TIPO[row.tipo]
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: row.status
+                      children: config_incidentes.STATUS[row.status]
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                         to: "/editar/".concat(row.id),

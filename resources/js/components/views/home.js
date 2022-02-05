@@ -6,20 +6,22 @@ import Swal from 'sweetalert2'
 
 export default function List() {
 
-    const [incidentes, setIncidente] = useState([])
+    var [incidentes, setIncidente] = useState([])
+    var config_incidentes = JSON.parse(document.getElementById('config_inicidentes').value);    
 
     useEffect(()=>{
         fetchIncidente() 
     },[])
 
-    const fetchIncidente = async () => {
-        await axios.get(`http://localhost:8186/api/incidentes`).then(({data})=>{
+    var fetchIncidente = async () => {
+        let url = process.env.MIX_APP_URL + '/api/incidentes';
+        await axios.get(url).then(({data})=>{
             setIncidente(data)
         })
     }
 
-    const deletIncidente = async (id) => {
-        const isConfirm = await Swal.fire({
+    var deletIncidente = async (id) => {
+        let isConfirm = await Swal.fire({
             title: 'Você tem certeza?',
             text: "Essa operação não pode ser desfeita!",
             icon: 'warning',
@@ -36,7 +38,8 @@ export default function List() {
             return;
           }
 
-          await axios.delete(`http://localhost:8186/api/incidente/${id}`).then(({data})=>{
+          let url = process.env.MIX_APP_URL + '/api/incidente/${id}';
+          await axios.delete(url).then(({data})=>{
             Swal.fire({
                 icon:"success",
                 text:data.message
@@ -78,10 +81,9 @@ export default function List() {
                                         incidentes.map((row, key)=>(
                                             <tr key={key}>
                                                 <td>{row.titulo}</td>
-                                                <td>{row.criticidade}</td>
-                                                <td>{row.tipo}</td>
-                                                <td>{row.status}</td>
-                                                
+                                                <td>{config_incidentes.CRITICIDADE[row.criticidade]}</td>
+                                                <td>{config_incidentes.TIPO[row.tipo]}</td>
+                                                <td>{config_incidentes.STATUS[row.status]}</td>
                                                 <td>
                                                     <Link to={`/editar/${row.id}`} className='btn btn-success me-2'>
                                                         Edit
