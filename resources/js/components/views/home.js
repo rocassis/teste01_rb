@@ -6,15 +6,15 @@ import Swal from 'sweetalert2'
 
 export default function List() {
 
-    const [products, setProducts] = useState([])
+    const [incidentes, setIncidente] = useState([])
 
     useEffect(()=>{
-        fetchProducts() 
+        fetchIncidente() 
     },[])
 
-    const fetchProducts = async () => {
+    const fetchIncidente = async () => {
         await axios.get(`http://localhost:8186/api/incidentes`).then(({data})=>{
-            setProducts(data)
+            setIncidente(data)
         })
     }
 
@@ -41,7 +41,7 @@ export default function List() {
                 icon:"success",
                 text:data.message
             })
-            fetchProducts()
+            fetchIncidente()
           }).catch(({response:{data}})=>{
             Swal.fire({
                 text:data.message,
@@ -65,7 +65,7 @@ export default function List() {
                         <table className="table table-bordered mb-0 text-center">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
+                                    <th>Título</th>
                                     <th>Criticidade</th>
                                     <th>Tipo</th>
                                     <th>Status</th>
@@ -74,8 +74,8 @@ export default function List() {
                             </thead>
                             <tbody>
                                 {
-                                    products.length > 0 && (
-                                        products.map((row, key)=>(
+                                    incidentes.length > 0 && (
+                                        incidentes.map((row, key)=>(
                                             <tr key={key}>
                                                 <td>{row.titulo}</td>
                                                 <td>{row.criticidade}</td>
