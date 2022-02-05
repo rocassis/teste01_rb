@@ -11,6 +11,7 @@ return (
 	}}
 	>
 	<h1>Tela de informações sobre o Desenvolvedor</h1>
+	
 	</div>
 );
 };
