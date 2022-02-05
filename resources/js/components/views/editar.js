@@ -19,6 +19,7 @@ export default function EditIncidente() {
   var [status, setStatus] = useState("")
 
   var [validationError, setValidationError] = useState({})
+  var config_incidentes = JSON.parse(document.getElementById('config_inicidentes').value)
 
   useEffect(() => {
     fetchIncidente()
@@ -27,7 +28,6 @@ export default function EditIncidente() {
   const fetchIncidente = async () => {
     await axios.get(`http://localhost:8186/api/incidente/${id}`).then(({ data }) => {
       let { titulo, descricao, criticidade, tipo, status } = data.incidente;
-      console.log(data);
       setTitle(titulo)
       setDescricao(descricao)
       setCriticidade(criticidade)
@@ -124,10 +124,11 @@ export default function EditIncidente() {
                     <Col>
                       <Form.Group controlId="Criticidade">
                         <Form.Label>Criticidade</Form.Label>
-                        <select className="select form-control" onChange={(event) => { setCriticidade(event.target.value) }}>
-                          <option value='1'>Alta</option>
-                          <option value='2'>Média</option>
-                          <option value='3'>Baixa</option>
+                        <select className="select form-control" value={criticidade} onChange={(event) => { setCriticidade(event.target.value) }}>
+                        {
+                            Object.entries(config_incidentes.CRITICIDADE).map(
+                              ([index, value_c]) => (<option key={index} value={index}>{value_c}</option>))
+                          }
                         </select>
                       </Form.Group>
                     </Col>
@@ -136,10 +137,11 @@ export default function EditIncidente() {
                     <Col>
                       <Form.Group controlId="Tipo">
                         <Form.Label>Tipo</Form.Label>
-                        <select className="select form-control" onChange={(event) => { setTipo(event.target.value) }}>
-                          <option value='1'>Alarme</option>
-                          <option value='2'>Incidente</option>
-                          <option value='3'>Outros</option>
+                        <select className="select form-control" value={tipo} onChange={(event) => { setTipo(event.target.value) }}>
+                        {
+                            Object.entries(config_incidentes.TIPO).map(
+                              ([index, value]) => (<option key={index} value={index}>{value}</option>))
+                          }
                         </select>
                       </Form.Group>
                     </Col>
@@ -148,9 +150,11 @@ export default function EditIncidente() {
                     <Col>
                       <Form.Group controlId="Status">
                         <Form.Label>Status</Form.Label>
-                        <select className="select form-control" onChange={(event) => { setStatus(event.target.value) }}>
-                          <option value='1'>Inativo</option>
-                          <option value='2'>Ativo</option>
+                        <select className="select form-control" value={status} onChange={(event) => { setStatus(event.target.value) }}>
+                        {
+                            Object.entries(config_incidentes.STATUS).map(
+                              ([index, value]) => (<option key={index} value={index} >{value}</option>))
+                          }
                         </select>
                       </Form.Group>
                     </Col>

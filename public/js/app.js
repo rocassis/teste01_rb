@@ -6522,6 +6522,8 @@ function CreateIncidente() {
       validationError = _useState12[0],
       setValidationError = _useState12[1];
 
+  var config_incidentes = JSON.parse(document.getElementById('config_inicidentes').value);
+
   var storeIncidente = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
       var formData;
@@ -6646,21 +6648,21 @@ function CreateIncidente() {
                       controlId: "Criticidade",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Criticidade"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
                         onChange: function onChange(event) {
                           setCriticidade(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Alta"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "M\xE9dia"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "3",
-                          children: "Baixa"
-                        })]
+                        children: Object.entries(config_incidentes.CRITICIDADE).map(function (_ref6) {
+                          var _ref7 = _slicedToArray(_ref6, 2),
+                              index = _ref7[0],
+                              value_c = _ref7[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value_c
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -6670,21 +6672,21 @@ function CreateIncidente() {
                       controlId: "Tipo",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Tipo"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
                         onChange: function onChange(event) {
                           setTipo(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Alarme"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "Incidente"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "3",
-                          children: "Outros"
-                        })]
+                        children: Object.entries(config_incidentes.TIPO).map(function (_ref8) {
+                          var _ref9 = _slicedToArray(_ref8, 2),
+                              index = _ref9[0],
+                              value = _ref9[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -6694,18 +6696,21 @@ function CreateIncidente() {
                       controlId: "Status",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Status"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
                         onChange: function onChange(event) {
                           setStatus(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Inativo"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "Ativo"
-                        })]
+                        children: Object.entries(config_incidentes.STATUS).map(function (_ref10) {
+                          var _ref11 = _slicedToArray(_ref10, 2),
+                              index = _ref11[0],
+                              value = _ref11[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -6816,6 +6821,7 @@ function EditIncidente() {
       validationError = _useState12[0],
       setValidationError = _useState12[1];
 
+  var config_incidentes = JSON.parse(document.getElementById('config_inicidentes').value);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchIncidente();
   }, []);
@@ -6835,7 +6841,6 @@ function EditIncidente() {
                     criticidade = _data$incidente.criticidade,
                     tipo = _data$incidente.tipo,
                     status = _data$incidente.status;
-                console.log(data);
                 setTitle(titulo);
                 setDescricao(descricao);
                 setCriticidade(criticidade);
@@ -6990,21 +6995,22 @@ function EditIncidente() {
                       controlId: "Criticidade",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Criticidade"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
+                        value: criticidade,
                         onChange: function onChange(event) {
                           setCriticidade(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Alta"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "M\xE9dia"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "3",
-                          children: "Baixa"
-                        })]
+                        children: Object.entries(config_incidentes.CRITICIDADE).map(function (_ref9) {
+                          var _ref10 = _slicedToArray(_ref9, 2),
+                              index = _ref10[0],
+                              value_c = _ref10[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value_c
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -7014,21 +7020,22 @@ function EditIncidente() {
                       controlId: "Tipo",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Tipo"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
+                        value: tipo,
                         onChange: function onChange(event) {
                           setTipo(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Alarme"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "Incidente"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "3",
-                          children: "Outros"
-                        })]
+                        children: Object.entries(config_incidentes.TIPO).map(function (_ref11) {
+                          var _ref12 = _slicedToArray(_ref11, 2),
+                              index = _ref12[0],
+                              value = _ref12[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -7038,18 +7045,22 @@ function EditIncidente() {
                       controlId: "Status",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_6__["default"].Label, {
                         children: "Status"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
                         className: "select form-control",
+                        value: status,
                         onChange: function onChange(event) {
                           setStatus(event.target.value);
                         },
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "1",
-                          children: "Inativo"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                          value: "2",
-                          children: "Ativo"
-                        })]
+                        children: Object.entries(config_incidentes.STATUS).map(function (_ref13) {
+                          var _ref14 = _slicedToArray(_ref13, 2),
+                              index = _ref14[0],
+                              value = _ref14[1];
+
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                            value: index,
+                            children: value
+                          }, index);
+                        })
                       })]
                     })
                   })
@@ -7250,7 +7261,7 @@ function List() {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                     children: "Status"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Actions"
+                    children: "A\xE7\xF5es"
                   })]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
@@ -7268,13 +7279,13 @@ function List() {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                         to: "/editar/".concat(row.id),
                         className: "btn btn-success me-2",
-                        children: "Edit"
+                        children: "Editar"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         variant: "danger",
                         onClick: function onClick() {
                           return deletIncidente(row.id);
                         },
-                        children: "Delete"
+                        children: "Excluir"
                       })]
                     })]
                   }, key);

@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('app');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/{any}', [HomeController::class, 'index'])->where('any', '.*');
 
-Route::view('/{any}', 'app')->where('any', '.*');
+// Route::view('/{any}', 'app')->where('any', '.*');

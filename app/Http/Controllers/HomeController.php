@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['config'] = json_encode(config('incidentes'));
+        $data['config_incidentes'] = json_encode(config('incidentes'));
         
         return view('app', $data);
     }

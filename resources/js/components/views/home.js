@@ -72,7 +72,7 @@ export default function List() {
                                     <th>Criticidade</th>
                                     <th>Tipo</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,10 +86,10 @@ export default function List() {
                                                 <td>{config_incidentes.STATUS[row.status]}</td>
                                                 <td>
                                                     <Link to={`/editar/${row.id}`} className='btn btn-success me-2'>
-                                                        Edit
+                                                        Editar
                                                     </Link>
                                                     <Button variant="danger" onClick={()=>deletIncidente(row.id)}>
-                                                        Delete
+                                                        Excluir
                                                     </Button>
                                                 </td>
                                             </tr>
